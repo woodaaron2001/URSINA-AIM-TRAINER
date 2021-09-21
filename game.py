@@ -1,7 +1,7 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 import time
-
+from playsound import playsound
 start_time = time.time()
 
 
@@ -39,6 +39,10 @@ class gunCamera(Entity):
             position= Vec2((0.4,-0.4)),
             texture = 'M9_BaseColor.png'
             )
+    def active(self):
+            self.position = Vec2(0.3,-0.3)
+    def passive(self):
+            self.position = Vec2(0.4,-0.4)
             
 class gameButton(Button):
     def __init__(self,position = (0,0,0),text = "default",stateGiven = 1):
@@ -77,17 +81,18 @@ class EnemyObject(Button):
 
 
 state = 0
+gun = gunCamera()
 
 def update():
     global state
     if (state == 0):
         camera.x +=1 * time.dt
         
-
+    
     if held_keys['#']:
         player = FirstPersonController(speed = 10, position = (0,35,0),fov= 150)
         state += 1
-        gun = gunCamera()
+        
     
     if held_keys['r']:
         camera.fov += 1
@@ -97,6 +102,9 @@ def update():
         
     if(state > 0):
         if held_keys['left mouse down']:
+            gun.active()
+        else:
+            gun.passive()
             
         
 app = Ursina()
