@@ -17,7 +17,23 @@ class LandObject(Entity):
             )
 
         
-
+class gameButton(Button):
+    def __init__(self,position = (0,0,0),text = "default"):
+        super().__init__(
+            parent = scene,
+            icon = 'sword',
+            position= position,
+            scale = 0.5,
+            highlight_color = color.lime
+            )
+    def input(self,key):
+        if self.hovered:
+            if key == 'left mouse down':
+                if self == button1:
+                    state.hordeMode()
+            destroy(button1)
+            destroy(button2)  
+            Audio('bell.mp3')
 
 class Player(Entity):
     def __init__(self,**kwargs):
@@ -33,7 +49,8 @@ class Player(Entity):
             model = 'cube',
             scale = (1.147,0.5,1),
             position= Vec2((0,0.1)),
-            texture = 'texts.png'
+            texture = 'text.png',
+            visibile = True
          )
         self.hand_gun = Entity(
               parent = self.controller,
@@ -65,9 +82,12 @@ class Player(Entity):
             self.switch_weapon()
         if key == '#':
             state.updateState(1)
+            state.chooseOption()
             self.controller = FirstPersonController(speed = 10, position = (0,35,0))
             self.controller.fov = 200
-            self.hand_gun.visible == True
+            self.hand_gun.enabled == True
+            self.Text.fade_out(0,duration = .5)
+            
             
         if key == 'left mouse down' and self.current == 0:
             Audio('gun.mp3')
@@ -79,17 +99,20 @@ class Player(Entity):
 
     def update(self):
         if state.state == 0:
-            camera.x +=1 * time.dt
-            
+            camera.x +=2 * time.dt
+        if held_keys['e']:
+            camera.fov += 1
+        if held_keys['r']:
+            camera.fov -= 1
         #self.controller.camera_pivot.y = 2-held_keys['left control']
         
             
     def switch_weapon(self):
         for i,v in enumerate(self.weapons):
              if i == self.current:
-                 v.visible == True
+                 v.fade_in(1,duration =.1)
              else:
-                v.visible == False
+                 v.fade_out(1,duration =.1)
             
 
 class Bullet(Entity):
@@ -103,11 +126,11 @@ class Bullet(Entity):
         if not ray.hit and time.time() - self.start < self.lifetime:
             self.world_position +=self.forward * self.speed * time.dt
         else:
-
+            
+            if str(ray.entity) == 'render/scene/enemy_object':
+                destroy(ray.entity)
+                Audio('death.mp3')
             destroy(self)
-            if ray.entity == EnemyObject:
-               destroy(ray.entity)
-               print("wow")
                 
                 
            
@@ -115,34 +138,68 @@ class Bullet(Entity):
 class State:
     def __init__(self,state):
         self.state = state
+        self.hitpoints = 19
+        self.entitys = []
+        
 
     def updateState(self,state):
         self.state = state
 
+    def introScreen(self):
+        for x in range (20):
+            enemy = EnemyObject(position =(random.uniform(-40,40),2.5,random.uniform(0,50)))
+            self.entitys.append(enemy)
+    def chooseOption(self):
+        for x in range (len(self.entitys)):
+            destroy(self.entitys[x])
+
+    def hordeMode(self):
+          for x in range (len(self.entitys)):
+            enemy = EnemyObject(position =(random.uniform(-40,40),2.5,random.uniform(0,50)))
+            self.entitys.append(enemy)
+    def loseMode(self):
+        print("You lose")
+        for x in range (len(self.entitys)):
+            destroy(self.entitys[x])
+
         
 class EnemyObject(Button):
-    def __init__(self,position = (0,0,0),scale = 1):
+    def __init__(self,position = (0,0,0),scale = 1,mode = 'random'):
+
         super().__init__(
             parent = scene,
             position= position,
             scale = scale,
             model = 'cube',
             texture = 'white_cube',
-            color = color.white,
+            color = color.red,
             collider = 'box',
             highlight_color = color.blue
             )
+        self.mode = mode
+        
     def update(self):
-        if self.x > 0:
-            self.x -= 0.1
-        if self.x < 0:
-            self.x += 0.1
-        if self.z > 0:
-            self.z -= 0.1
-        if self.z < 0:
-            self.z += 0.1            
+        if state.state == 4:
+            self.x += random.uniform(-0.25,0.25)
+            self.z += random.uniform(-0.25,0.25)
+        else:
+            if self.x > 0:
+                self.x -= 0.1
+            if self.x < 0:
+                self.x += 0.1
+            if self.z > 0:
+                self.z -= 0.1
+            if self.z < 0:
+                self.z += 0.1
+            if self.x < 4.0:
+                if self.x > -4.0:
+                    if self.z > -4.0:
+                        if self.z < 4.0:
+                            state.hitpoints -= 1
+                            print(state.hitpoints)
+                            destroy(self)
 
-
+            
 class Sky(Entity):
 	def __init__(self):
 		super().__init__(
@@ -151,11 +208,11 @@ class Sky(Entity):
 			texture = 'sky_texture',
 			scale = 200,
 			double_sided = True)
-		
 app = Ursina()
 
 state = State(0)
-print(state.state)
+state.introScreen()
+
 PlayerT = Player()
 side1 = LandObject(position = (0,25,50),scale= (100,50,1),texture = 'wall.jpg')
 side2 = LandObject(position = (0,25,-50),scale= (100,50,1),texture = 'wall.jpg')
@@ -178,8 +235,11 @@ top = LandObject(position = (0,22,0),scale= (5,0.5,5),texture = 'black.jpg')
 
 Sky = Sky()
 
-for x in range (500):
-    enemy = EnemyObject(position =(random.uniform(-40,40),2.5,random.uniform(0,50)))
-    
+
+button1 = gameButton(position  = (1,16,1.7),text = "Horde")
+button2 = gameButton(position  = (-1,16,1.7),text = "Sniper")
+
+button1.tooltip = Tooltip('Game 1: Sniper Slow shooting game with smaller targets')
+button2.tooltip = Tooltip('Game 2: Hit as many targets as possible before entitys get too close to the tower')
 
 app.run()
