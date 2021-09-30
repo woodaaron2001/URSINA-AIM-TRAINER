@@ -11,7 +11,7 @@ Mode 1 defend the base before you run out of hitpoints
 Mode 2 Score as many points against the targets before time runs out 
 <img src="https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/README3.png" />
   
-
+![alt text](https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/README3.png)
 <p align="center">
   <img src="https://github.com/UCD-COMP20050/EvaBot/blob/main/Risk%20EvaBot/res/Logo.jpeg" />
 </p>
