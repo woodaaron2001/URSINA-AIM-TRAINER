@@ -261,9 +261,9 @@ class TargetObject(Button):
             position= position,
             scale = scale,
             model = 'circle',
-            color = color.green,
+            texture = 'archery.png',
             collider = 'box',
-            highlight_color = color.blue
+            highlight_color = color.black
             )
         self.mode = mode
         
