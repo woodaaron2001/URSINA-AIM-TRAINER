@@ -6,12 +6,11 @@ Defend the base from attack or sharpshoot targets in AIMTRAINER
 
 Mode 1 defend the base before you run out of hitpoints
 <p align= "center">
-<img src = "https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/README2.png"/>
+<img src ="https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/archery.png" />
 </p>
 Mode 2 Score as many points against the targets before time runs out 
-<p align= "center">
-<img src = "https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/README3.png"/>
-</p>  
+<img src="https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/README3.png" />
+  
 
 <p align="center">
   <img src="https://github.com/UCD-COMP20050/EvaBot/blob/main/Risk%20EvaBot/res/Logo.jpeg" />
