@@ -13,12 +13,16 @@ Mode 2 Score as many points against the targets before time runs out
 <img src = "https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/README3.png"/>
 </p>  
 
+<p align="center">
+  <img src="https://github.com/UCD-COMP20050/EvaBot/blob/main/Risk%20EvaBot/res/Logo.jpeg" />
+</p>
+
 # Tools used
 Developed using [Python 3](https://www.python.org/downloads/)  
-Game engine Library [Ursina]"https://www.ursinaengine.org/)    
+Game engine Library [Ursina](https://www.ursinaengine.org/)    
 [UrsinaCheatSheet](https://www.ursinaengine.org/cheat_sheet.html): Module and class list in ursina  
 
 # How to run
  From command prompt use 'pip install ursina'  
- From there run the [UrsinaAim trainer.py]("https://github.com/woodaaron2001/URSINA-AIM-TRAINER/blob/main/UrsinaAimTrainer.py") file.
+ From there run the [UrsinaAim trainer.py](https://github.com/woodaaron2001/URSINA-AIM-TRAINER/blob/main/UrsinaAimTrainer.py) file.
 
