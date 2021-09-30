@@ -1,7 +1,7 @@
 # AIM TRAINER URSINA
 Defend the base from attack or sharpshoot targets in AIMTRAINER  
 <p align="center">
-  <img src="https://github.com/UCD-COMP20050/EvaBot/blob/main/Risk%20EvaBot/res/Logo.jpeg" />
+  <img src="https://github.com/woodaaron2001/URSINA-AIM-TRAINER/blob/main/assets/sky_texture.jpg" />
 </p>
 
 
