@@ -1,7 +1,7 @@
 # AIM TRAINER URSINA
 Defend the base from attack or sharpshoot targets in AIMTRAINER  
 <p align="center">
-  <img src= "https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/BLACK.jpg" />
+  <img src= "https://github.com/woodaaron2001/URSINA-AIM-TRAINER/blob/main/assets/black.jpg" />
 </p>
 
 Mode 1 defend the base before you run out of hitpoints  
