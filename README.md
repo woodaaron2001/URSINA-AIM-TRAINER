@@ -4,6 +4,8 @@ Defend the base from attack or sharpshoot targets in AIMTRAINER
   <img src= "https://github.com/woodaaron2001/URSINA-AIM-TRAINER/blob/main/assets/README.png" />
 </p>
 
+Mode 1 Defend the tower before it gets destroyed  
+
 <p align="center">
   <img src= "https://github.com/woodaaron2001/URSINA-AIM-TRAINER/blob/main/assets/README2.png" />
 </p>
