@@ -13,8 +13,8 @@ Mode 1 Defend the tower before it gets destroyed
 Mode 2 Score as many points against the targets before time runs out 
 
 <p align="center">
-  <img src="https://github.com/woodaaron2001/URSINA-AIM-TRAINER/tree/main/assets/README3.png" />
-</p>+
+  <img src="https://github.com/woodaaron2001/URSINA-AIM-TRAINER/blob/main/assets/README3.png" />
+</p>
 
 
 # Tools used
