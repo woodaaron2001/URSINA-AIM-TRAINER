@@ -84,7 +84,7 @@ class Player(Entity):
             self.switch_weapon()
         if key == 't' and state.state != 0:
             self.controller = FirstPersonController(speed = 10, position = (0,18,0))
-        if key == '#' and state.state == 0:
+        if  state.state == 0:
             state.updateState(1)
             state.chooseOption()
             self.controller = FirstPersonController(speed = 10, position = (0,18,0))
